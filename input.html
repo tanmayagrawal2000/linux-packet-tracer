@@ -1,0 +1,49 @@
+<html>
+<head>
+  <style>
+div.in {
+  background-color:#FFFCF7;
+  margin: auto; 
+  border: 2px solid black;
+  padding: 50px;
+}
+    div.out {
+  background-color: #7FFFD4;
+  width: 30%;
+  padding: 30px;
+  margin: 10px;
+}
+</style>
+<title>TCPDUMP</title>>
+</head>
+<body>
+<div class="out">
+<div class="in">
+<form action="">
+ <label><b>Protocol:</b></label>
+<input type="radio" name="type"> TCP
+<input type="radio" name="type"> UDP
+<input type="radio" name="type"> ARP
+  <br/>
+  <br/>
+  <label><b>Choose:</b></label>
+ <select name="choice" id="choice">
+  <option value="timestamp">Timestamp</option>
+  <option value="sourceip">Source IP</option>
+  <option value="sourceport">Source Port</option>
+  <option value="sourcemac">Source Mac</option>
+  <option value="destip">Destination IP</option>
+  <option value="destport">Destination Port</option>
+  <option value="destmac">Destination Mac</option>
+   <option value="length">Packet Length</option>
+<option value="all">All</option>
+</select>
+<br/>
+  <br/>
+  <input type="button" value="Submit"/>
+ </form>
+    </div>
+  </div>
+</body>
+</html>
+
