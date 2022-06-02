@@ -14,16 +14,16 @@ div.in {
   margin: 10px;
 }
 </style>
-<title>TCPDUMP</title>>
+<title>TCPDUMP</title>
 </head>
 <body>
 <div class="out">
 <div class="in">
-<form action="">
+<form action="hmm.php" method="POST">
  <label><b>Protocol:</b></label>
-<input type="radio" name="type"> TCP
-<input type="radio" name="type"> UDP
-<input type="radio" name="type"> ARP
+<input type="radio" name="type" value="tcp"> TCP
+<input type="radio" name="type" value="udp"> UDP
+<input type="radio" name="type" value="arp"> ARP
   <br/>
   <br/>
   <label><b>Choose:</b></label>
@@ -40,7 +40,7 @@ div.in {
 </select>
 <br/>
   <br/>
-  <input type="button" value="Submit"/>
+  <input type="submit" value="Submit"/>
  </form>
     </div>
   </div>
