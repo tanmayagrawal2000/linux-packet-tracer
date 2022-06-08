@@ -1,47 +1,41 @@
 #!/bin/bash
-mkdir dumper2
-cd dumper2
-mkdir tcp
-mkdir udp
-mkdir arp
-tcpdump -c 200 -n -w output
-tcpdump -r output -nn | grep 'UDP' >udpall
-tcpdump -r output -nn | grep 'Flags' >tcpall
-tcpdump -r output -nn | grep 'ARP' >arpall
-
-tcpdump -e -r output | grep 'ARP' >arpmac
-tcpdump -e -r output | grep 'UDP' >udpmac
-tcpdump -e -r output | grep 'Flags' >tcpmac
-
-cut -d ' ' -f2 udpmac > udpsourcemac
-cut -d ' ' -f6 udpmac > udpdestmac
-cut -d ' ' -f1 udpall > udptimestamp
-cut -d ' ' -f3 udpall > udpsourceip
-cut -d ' ' -f5 udpall > udpdestip
-cut -d ' ' -f8 udpall > udplength
-cut -d '.' -f5 udpsourceip > udpsourceport
-cut -d '.' -f5  udpdestip > udpdestport
-
-cut -d ' ' -f1 arpall > arptimestamp
-cut -d ' ' -f5 arpall > arpsourceip
-cut -d ' ' -f7 arpall > arpdestip
-cut -d ' ' -f9 arpall > arplength
-cut -d ' ' -f2 arpmac > arpsourcemac
-cut -d ' ' -f6 arpmac > arpdestmac
-cut -d '.' -f5  arpdestip > arpdestport
-cut -d '.' -f5  arpsourceip > arpsourceport
-
+rm -rf tracer && mkdir tracer
+cd tracer
+tcpdump -ne -c 200 > output
+grep 'Flags' output > tcpall
+grep 'UDP' output > udpall
+grep 'ARP' output > arpall
 cut -d ' ' -f1 tcpall > tcptimestamp
-cut -d ' ' -f3 tcpall > tcpsourceip
-cut -d ' ' -f5 tcpall > tcpdestip
-cut -d ' ' -f2 tcpmac > tcpsourcemac
-cut -d ' ' -f6 tcpmac > tcpdestmac
+cut -d ' ' -f2 tcpall > tcpsourcemac
+cut -d ' ' -f4 tcpall > tcpdestmac
+cut -d ' ' -f10 tcpall > tcpsourceip_port
+cut -d ' ' -f12 tcpall > tcpdestip_port
+cut -d '.' -f 1-4 tcpsourceip_port >tcpsourceip
+cut -d '.' -f 1-4 tcpdestip_port >tcpdestip
 grep -o '[^,]*$' < tcpall > templength
 cut -d ' ' -f3 templength > tcplength
-cut -d '.' -f5  tcpsourceip > tcpsourceport
-cut -d '.' -f5  tcpdestip > tcpdestport
+rm templength
+cut -d '.' -f5  tcpsourceip_port > tcpsourceport
+cut -d '.' -f5  tcpdestip_port > tcpdestport
 
+cut -d ' ' -f1 udpall > udptimestamp
+cut -d ' ' -f2 udpall > udpsourcemac
+cut -d ' ' -f4 udpall > udpdestmac
+cut -d ' ' -f10 udpall > udpsourceip_port
+cut -d ' ' -f12 udpall > udpdestip_port
+cut -d '.' -f 1-4 udpsourceip_port >udpsourceip
+cut -d '.' -f 1-4 udpdestip_port >udpdestip
+cut -d '.' -f5  udpsourceip_port > udpsourceport
+cut -d '.' -f5  udpdestip_port > udpdestport
+grep -o '[^,]*$' < udpall > templength
+cut -d ' ' -f3 templength > udplength
+rm templength
 
-#!mv udpall udptimestamp udpsource udpdest udp
-#!mv tcpall tcptimestamp tcpsource tcpdest tcp
-#!mv arptimestamp arpall arpdest arpsource arp
+cut -d ' ' -f1 arpall > arptimestamp
+cut -d ' ' -f2 arpall > arpsourcemac
+cut -d ' ' -f4 arpall > arpdestmac
+cut -d ' ' -f12 arpall > arpsourceip
+cut -d ' ' -f14 arpall > arpdestip
+grep -o '[^,]*$' < arpall > templength
+cut -d ' ' -f3 templength > arplength
+rm templength
