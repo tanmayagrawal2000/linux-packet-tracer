@@ -38,7 +38,7 @@ First go to root directory and install apache2 and php.
 ## Configuration
 ```
    cd /var/www/html
-   rm -r index.html
+   rm index.html
    git clone https://github.com/tanmayagrawal2000/network-monitoring-tool.git .
    bash config.sh
 ```
