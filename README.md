@@ -11,7 +11,7 @@ This tool tracks the on going packet in the network and displays them according 
 - UDP
 - ARP
 
-## Protcol Deatils
+## Protcol Details
 
 - Timestamp
 - Source IP
