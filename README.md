@@ -1,5 +1,5 @@
 
-# Network Monitoring  Tool ![](https://img.shields.io/github/last-commit/tanmayagrawal2000/network-monitoring-tool?style=for-the-badge) ![](https://img.shields.io/badge/-PHP-blue?style=for-the-badge) ![](https://img.shields.io/badge/-Apache2-red?style=for-the-badge) ![](https://img.shields.io/badge/-ShellScirpt-yellow?style=for-the-badge)
+# Network Monitoring  Tool ![](https://img.shields.io/github/last-commit/tanmayagrawal2000/network-monitoring-tool?style=for-the-badge) ![](https://img.shields.io/badge/-PHP-blue?style=for-the-badge) ![](https://img.shields.io/badge/-Apache2-red?style=for-the-badge) ![](https://img.shields.io/badge/-HTML-green?style=for-the-badge) ![](https://img.shields.io/badge/-CSS-purple?style=for-the-badge) ![](https://img.shields.io/badge/-ShellScirpt-yellow?style=for-the-badge)
 This tool tracks the on going packet in the network and displays them according to user chosen protocol and choices.
 
 
